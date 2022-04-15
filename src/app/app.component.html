@@ -1,0 +1,21 @@
+<h1>Angular + Apollo 🚀</h1>
+
+<h3>Posts</h3>
+<p *ngIf="postsLoading$ | async">Loading ...</p>
+<ul *ngIf="posts$ | async as posts">
+  <ng-container *ngIf="posts?.length">
+    <li *ngFor="let post of posts">
+      <span>{{ post.title }} by </span>
+      <strong>{{ post.author.firstName }} {{ post.author.lastName }}</strong>
+      <span> - ({{ post.votes }} votes) </span>
+      <button (click)="likePost(post.id)">Like</button>
+    </li>
+  </ng-container>
+</ul>
+
+<h3>Posts by authorId: 3</h3>
+<ul>
+  <li *ngFor="let post of postsByAuthorId$ | async">
+    <span>{{ post.title }}</span>
+  </li>
+</ul>
